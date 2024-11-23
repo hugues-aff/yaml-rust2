@@ -1913,13 +1913,6 @@ impl<T: Iterator<Item = char>> Scanner<T> {
                 ));
             }
 
-            if (self.mark.col as isize) < self.indent {
-                return Err(ScanError::new(
-                    start_mark,
-                    "invalid indentation in quoted scalar",
-                ));
-            }
-
             leading_blanks = false;
             self.consume_flow_scalar_non_whitespace_chars(
                 single,
